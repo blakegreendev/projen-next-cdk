@@ -6,7 +6,7 @@ export class CdkStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
 
-    new amp.App(this, "amplify", {
+    const amplifyApp = new amp.App(this, "amplify", {
       appName: "sketchynote",
       sourceCodeProvider: new amp.GitHubSourceCodeProvider({
         owner: "blakegreendev",
@@ -34,5 +34,7 @@ export class CdkStack extends Stack {
         },
       }),
     });
+
+    amplifyApp.addBranch("main");
   }
 }
