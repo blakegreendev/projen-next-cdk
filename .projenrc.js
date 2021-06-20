@@ -11,6 +11,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-amplify',
     '@aws-cdk/aws-dynamodb',
     '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-codebuild',
     '@aws-cdk/aws-route53',
     '@aws-cdk/aws-certificatemanager',
     '@aws-cdk/core',

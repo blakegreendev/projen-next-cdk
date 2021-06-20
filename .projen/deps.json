@@ -97,6 +97,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-codebuild",
+      "version": "^1.103.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-cognito",
       "version": "^1.103.0",
       "type": "runtime"
