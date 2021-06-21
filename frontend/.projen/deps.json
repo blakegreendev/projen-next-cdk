@@ -29,6 +29,18 @@
       "type": "build"
     },
     {
+      "name": "@aws-amplify/auth",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-amplify/ui-components",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-amplify/ui-react",
+      "type": "runtime"
+    },
+    {
       "name": "autoprefixer",
       "type": "runtime"
     },

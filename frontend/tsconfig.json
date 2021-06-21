@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "pages",
+    "rootDir": ".",
     "outDir": "lib",
     "alwaysStrict": true,
     "declaration": true,
@@ -32,8 +32,10 @@
     "jsx": "preserve",
     "allowJs": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "forceConsistentCasingInFileNames": false,
+    "noEmit": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "**/*.ts",

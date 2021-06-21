@@ -31,10 +31,36 @@ const webProject = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
 
   deps: [
+    '@aws-amplify/auth',
+    '@aws-amplify/ui-components',
+    '@aws-amplify/ui-react',
     'aws-amplify',
     'env-cmd',
     'uuid'
   ],
+
+  eslint: false,
+
+  tsconfig: {
+    compilerOptions: {
+      baseUrl: ".",
+      rootDir: '.',
+      allowJs: true,
+      skipLibCheck: true,
+      esModuleInterop: true,
+      allowSyntheticDefaultImports: true,
+      forceConsistentCasingInFileNames: false,
+      module: 'esnext',
+      moduleResolution: 'node',
+      isolatedModules: true,
+      noEmit: true,
+      jsx: 'preserve',
+    },
+    include: [
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+  },
 
 });
 
