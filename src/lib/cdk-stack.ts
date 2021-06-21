@@ -11,7 +11,7 @@ export class CdkStack extends Stack {
       sourceCodeProvider: new amp.GitHubSourceCodeProvider({
         owner: "blakegreendev",
         repository: "projen-next-cdk",
-        oauthToken: SecretValue.secretsManager("github-token"),
+        oauthToken: SecretValue.secretsManager("github-repo"),
       }),
       buildSpec: BuildSpec.fromObjectToYaml({
         version: "1.0",

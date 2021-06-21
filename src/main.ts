@@ -8,5 +8,5 @@ const devEnv = {
 };
 
 const app = new App();
-new CdkStack(app, `FrontendStack`, { env: devEnv });
+new CdkStack(app, `CdkStack`, { env: devEnv });
 app.synth();
