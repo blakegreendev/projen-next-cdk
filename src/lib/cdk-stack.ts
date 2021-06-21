@@ -32,9 +32,20 @@ export class CdkStack extends Stack {
             paths: "frontend/node_modules/**/*",
           },
         },
+        appRoot: "dynamic-routing",
       }),
     });
 
-    amplifyApp.addBranch("main");
+    const main = amplifyApp.addBranch("main");
+    const domain = amplifyApp.addDomain("sketchy.blakegreen.dev", {
+      enableAutoSubdomain: true, // in case subdomains should be auto registered for branches
+      autoSubdomainCreationPatterns: ["*", "pr*"], // regex for branches that should auto register subdomains
+    });
+    domain.mapRoot(main); // map master branch to domain root
+    amplifyApp.addCustomRule({
+      source: "/<*>",
+      target: "/404.html",
+      status: amp.RedirectStatus.NOT_FOUND_REWRITE,
+    });
   }
 }
