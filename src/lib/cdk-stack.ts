@@ -32,7 +32,6 @@ export class CdkStack extends Stack {
             paths: "frontend/node_modules/**/*",
           },
         },
-        appRoot: "dynamic-routing",
       }),
     });
 
