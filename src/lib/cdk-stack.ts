@@ -21,7 +21,7 @@ export class CdkStack extends Stack {
               commands: ["cd frontend && yarn"],
             },
             build: {
-              commands: ["cd frontend && yarn build"],
+              commands: ["yarn build"],
             },
           },
           artifacts: {
