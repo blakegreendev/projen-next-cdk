@@ -63,9 +63,9 @@ const webProject = new web.NextJsTypeScriptProject({
       "**/*.tsx"
     ],
   },
-  gitignore: [
-    'build/',
-  ]
+  // gitignore: [
+  //   'build/',
+  // ]
 
 });
 
