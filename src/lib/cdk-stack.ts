@@ -25,7 +25,7 @@ export class CdkStack extends Stack {
             },
           },
           artifacts: {
-            baseDirectory: ".next",
+            baseDirectory: "build",
             files: "**/*",
           },
           cache: {
