@@ -39,7 +39,9 @@ const webProject = new web.NextJsTypeScriptProject({
     'uuid'
   ],
 
-  eslint: false,
+  devDeps: [
+    'eslint-config-next'
+  ],
 
   tsconfig: {
     compilerOptions: {
@@ -61,6 +63,9 @@ const webProject = new web.NextJsTypeScriptProject({
       "**/*.tsx"
     ],
   },
+  gitignore: [
+    'build/',
+  ]
 
 });
 
