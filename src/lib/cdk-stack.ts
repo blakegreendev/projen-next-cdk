@@ -51,10 +51,5 @@ export class CdkStack extends Stack {
       autoSubdomainCreationPatterns: ["*", "pr*"], // regex for branches that should auto register subdomains
     });
     domain.mapRoot(main); // map master branch to domain root
-    // amplifyApp.addCustomRule({
-    //   source: "/<*>",
-    //   target: "/404.html",
-    //   status: amp.RedirectStatus.NOT_FOUND_REWRITE,
-    // });
   }
 }
