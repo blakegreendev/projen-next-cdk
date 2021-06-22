@@ -1,10 +1,18 @@
 import * as amp from "@aws-cdk/aws-amplify";
 import { BuildSpec } from "@aws-cdk/aws-codebuild";
+import { ManagedPolicy, Role, ServicePrincipal } from "@aws-cdk/aws-iam";
 import { Construct, Stack, StackProps, SecretValue } from "@aws-cdk/core";
 
 export class CdkStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
+
+    const role = new Role(this, "MyRole", {
+      assumedBy: new ServicePrincipal("amplify.amazonaws.com"),
+    });
+    role.addManagedPolicy(
+      ManagedPolicy.fromAwsManagedPolicyName("AdministratorAccess")
+    );
 
     const amplifyApp = new amp.App(this, "amplify", {
       appName: "sketchynote",
@@ -13,25 +21,27 @@ export class CdkStack extends Stack {
         repository: "projen-next-cdk",
         oauthToken: SecretValue.secretsManager("github-repo"),
       }),
+      role,
       buildSpec: BuildSpec.fromObjectToYaml({
         version: "1.0",
         frontend: {
           phases: {
             preBuild: {
-              commands: ["cd frontend && yarn"],
+              commands: ["yarn install"],
             },
             build: {
-              commands: ["yarn build"],
+              commands: ["yarn run build"],
             },
           },
           artifacts: {
-            baseDirectory: "frontend/.next",
+            baseDirectory: ".next",
             files: "**/*",
           },
           cache: {
-            paths: "frontend/node_modules/**/*",
+            paths: "node_modules/**/*",
           },
         },
+        appRoot: "frontend",
       }),
     });
 
@@ -41,10 +51,10 @@ export class CdkStack extends Stack {
       autoSubdomainCreationPatterns: ["*", "pr*"], // regex for branches that should auto register subdomains
     });
     domain.mapRoot(main); // map master branch to domain root
-    amplifyApp.addCustomRule({
-      source: "/<*>",
-      target: "/404.html",
-      status: amp.RedirectStatus.NOT_FOUND_REWRITE,
-    });
+    // amplifyApp.addCustomRule({
+    //   source: "/<*>",
+    //   target: "/404.html",
+    //   status: amp.RedirectStatus.NOT_FOUND_REWRITE,
+    // });
   }
 }
