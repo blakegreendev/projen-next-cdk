@@ -35,12 +35,15 @@ const webProject = new web.NextJsTypeScriptProject({
     '@aws-amplify/ui-components',
     '@aws-amplify/ui-react',
     'aws-amplify',
+    'react',
+    'react-dom',
     'env-cmd',
     'uuid'
   ],
 
   devDeps: [
-    'eslint-config-next'
+    'eslint-config-next',
+    'eslint'
   ],
 
   tsconfig: {
@@ -67,5 +70,6 @@ const webProject = new web.NextJsTypeScriptProject({
 });
 
 webProject.setScript("start:local", "env-cmd -f .env.local")
+webProject.setScript("lint", "next lint")
 
 webProject.synth();
